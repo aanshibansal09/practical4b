@@ -11,23 +11,28 @@
         }
     </style>
     <script>
-       
-    const myDiv = document.getElementById('mydiv');
+        // Define an array of colors
+        const colors = ['blue', 'red', 'green'];
+        let currentColorIndex = 0; // Start with the first color
 
-let colors = ['blue', 'red', 'green'];//array for the different colours
-let colorIndex = 0;//setting first color as blue
+        // Function to change the color of the div
+        function changeColor() {
+            const mydiv = document.getElementById('mydiv');
+            // Set the color of the div to the current color
+            mydiv.style.backgroundColor = colors[currentColorIndex];
+            // Move to the next color in the array
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+        }
 
-myDiv.style.backgroundColor = colors[colorIndex];
-
-myDiv.addEventListener('click', () => {
-    colorIndex = (colorIndex + 1) % colors.length;
-    myDiv.style.backgroundColor = colors[colorIndex];
-});
-
+        // Attach the click event to the div
+        window.onload = function() {// window.onload is an event listener 
+            const mydiv = document.getElementById('mydiv');
+            mydiv.style.backgroundColor = 'blue'; // Set initial color to blue
+            mydiv.addEventListener('click', changeColor);
+        };
     </script>
 </head>
 <body>
 <div id="mydiv"></div>
-
 </body>
 </html>
